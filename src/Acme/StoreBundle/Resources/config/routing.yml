@@ -10,9 +10,19 @@ acme_store_user_add:
     path:     /user/add
     defaults: { _controller: AcmeStoreBundle:User:add }
 
+acme_store_user_add2:
+    path:     /user/add2
+    defaults: { _controller: AcmeStoreBundle:User:add2 }
+
 acme_store_user_create:
     path:     /user/create
     defaults: { _controller: AcmeStoreBundle:User:create }
+    methods: POST
+    defaults: { _controller: AcmeStoreBundle:User:add2 }
+
+acme_store_user_create2:
+    path:     /user/create2
+    defaults: { _controller: AcmeStoreBundle:User:create2 }
     methods: POST
 
 acme_store_user_edit:

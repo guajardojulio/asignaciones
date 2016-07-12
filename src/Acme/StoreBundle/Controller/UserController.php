@@ -24,58 +24,73 @@ class UserController extends Controller
     public function addAction()
     {
         $objUser = new User();
-        //$form = $this->createCreateForm($user);
-        $form = $this->createForm(new UserType() , $objUser, array(
-            'action' => $this->generateUrl('acme_store_user_create'),
-            'method' => 'POST'));
+        $form = $this->createCreateForm($objUser);
         return $this->render('AcmeStoreBundle:User:add.html.twig',array('form' => $form->createView()));
-
-       /* $form = $this->createFormBuilder($user)
-            ->setAction($this->generateUrl('acme_store_user_create'))
-            ->setMethod('POST')
-            ->add('NombreUsuario')
-            ->add('Clave')
-            ->add('NombreCompleto')
-            ->add('IdRol')
-            ->add('Estado',ChoiceType::class, array(
-                'choices'  => array(
-                    'ACTIVO' => 'ACTIVO','INACTIVO' => 'INACTIVO')))
-            ->add('save',SubmitType::class,array('label'=>'Save user'))
-            ->getForm();
-
-        return $this->render('AcmeStoreBundle:User:add.html.twig',array('form' => $form->createView()));*/
     }
 
     public function createCreateForm(User $entity)
     {
-
-       /* $form = $this->createForm(UserType::class , $entity, array(
-           'action' => $this->generateUrl('acme_store_user_create'),
-            'method' => 'POST'
-        ));*/
-        $form = $this->createForm(UserType::class , $entity);
+        $form = $this->createForm(UserType::class , $entity, array(
+            'action' => $this->generateUrl('acme_store_user_create'),
+             'method' => 'POST'
+         ));
         return $form;
+    }
+
+    public function add2Action()
+    {
+        $objUser = new User();
+        $form = $this->createFormBuilder($objUser)
+             ->setAction($this->generateUrl('acme_store_user_create2'))
+             ->setMethod('POST')
+             ->add('NombreUsuario')
+             ->add('Clave')
+             ->add('NombreCompleto')
+             ->add('IdRol')
+             ->add('Estado',ChoiceType::class, array(
+                 'choices'  => array(
+                     'ACTIVO' => 'ACTIVO','INACTIVO' => 'INACTIVO')))
+             ->add('save',SubmitType::class,array('label'=>'Save user'))
+             ->getForm();
+
+         return $this->render('AcmeStoreBundle:User:add.html.twig',array('form' => $form->createView()));
     }
 
     public function createAction(Request $request)
     {
-        $user = new User();
-        $form = $this->createCreateForm($user);
-        $form = handleRequest($request);
-
+        $objUser = new User();
+        $form = $this->createCreateForm($objUser);
+        $form->handleRequest($request);
         if($form->isValid())
         {
             $em=$this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush;
-
+            $em->persist($objUser);
+            $em->flush();
             return $this->redirectToRoute('acme_store_user_index');
         }
-
         return $this->redirectToRoute('acme_store_homepage');
         //return $this->render('AcmeStoreBundle:User:add.html.twig',array('form'=>$form->createView()));
     }
 
+    public function create2Action(Request $request)
+    {
+        $objUser = new User();
+        //$form = $this->createCreateForm($user);
+        $form = $this->createForm(UserType::class , $objUser);
+        $form->handleRequest($request);
+
+       // if($form->isValid())
+       // {
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($objUser);
+            $em->flush();
+
+            return $this->redirectToRoute('acme_store_user_index');
+      //  }
+
+       // return $this->redirectToRoute('acme_store_homepage');
+        //return $this->render('AcmeStoreBundle:User:add.html.twig',array('form'=>$form->createView()));
+    }
 
     public function viewAction($id){
         $repository = $this->getDoctrine()->getRepository('AcmeStoreBundle:User');
