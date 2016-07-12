@@ -1,0 +1,42 @@
+{%  extends '::base.html.twig' %}
+
+{% block body %}
+
+    <div class="main container">
+        <div class="row well">
+            <div class="page-header">
+                <h2 class="padding-none">New Users.</h2>
+                    {{ form_start(form,{'attr' : {'role':'form'}}) }}
+                        <div class="form-group">
+                            {{ form_label(form.NombreUsuario,"Nombre de Usuario:") }}
+                            {{ form_widget(form.NombreUsuario,{'attr': {'class': 'form-control', 'placeholder':'ingrese nombre usuario'} }) }}
+                            <span class="text-danger">{{ form_errors(form.NombreUsuario) }}</span>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.Clave,"Clave de Usuario:") }}
+                            {{ form_widget(form.Clave,{'attr': {'class': 'form-control', 'placeholder':'ingrese clave'} }) }}
+                            <span class="text-danger">{{ form_errors(form.Clave) }}</span>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.NombreCompleto,"Nombre Completo:") }}
+                            {{ form_widget(form.NombreCompleto,{'attr': {'class': 'form-control', 'placeholder':'ingrese nombre completo'} }) }}
+                            <span class="text-danger">{{ form_errors(form.NombreCompleto) }}</span>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.IdRol,"Rol:") }}
+                            {{ form_widget(form.IdRol,{'attr': {'class': 'form-control', 'placeholder':'nombre usuario'} }) }}
+                            <span class="text-danger">{{ form_errors(form.IdRol) }}</span>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.Estado,"Estado:") }}
+                            {{ form_widget(form.Estado,{'attr': {'class': 'form-control', 'placeholder':'estado del usuario'} }) }}
+                            <span class="text-danger">{{ form_errors(form.Estado) }}</span>
+                        </div>
+                        <p>
+                            {{ form_widget(form.save,{'label':'Create User....','attr':{'class':'btn btn-success'}}) }}
+                        </p>
+                    {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

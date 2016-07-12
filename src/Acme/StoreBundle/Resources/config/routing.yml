@@ -1,0 +1,28 @@
+acme_store_homepage:
+    path:     /
+    defaults: { _controller: AcmeStoreBundle:Default:index }
+
+acme_store_user_index:
+    path:     /user/index
+    defaults: { _controller: AcmeStoreBundle:User:index }
+
+acme_store_user_add:
+    path:     /user/add
+    defaults: { _controller: AcmeStoreBundle:User:add }
+
+acme_store_user_create:
+    path:     /user/create
+    defaults: { _controller: AcmeStoreBundle:User:create }
+    methods: POST
+
+acme_store_user_edit:
+    path:     /user/edit/{id}
+    defaults: { _controller: AcmeStoreBundle:User:edit }
+
+acme_store_user_view:
+    path:     /user/view/{id}
+    defaults: { _controller: AcmeStoreBundle:User:view }
+
+acme_store_user_del:
+    path:     /user/del/{id}
+    defaults: { _controller: AcmeStoreBundle:User:delete }    
