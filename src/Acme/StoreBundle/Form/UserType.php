@@ -20,11 +20,11 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombreUsuario' )
-            ->add('clave' )
-            ->add('nombreCompleto' )
-            ->add('idRol' )
-            ->add('estado' )
+            ->add('nombreUsuario')
+            ->add('clave')
+            ->add('nombreCompleto')
+            ->add('idRol')
+            ->add('estado')
             ->add('save',SubmitType::class)
         ;
     }
@@ -41,6 +41,6 @@ class UserType extends AbstractType
 
     public function getName()
     {
-        return 'user';
+        return 'User';
     }
 }

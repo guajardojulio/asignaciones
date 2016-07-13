@@ -21,10 +21,18 @@ class UserController extends Controller
         return $this->render('AcmeStoreBundle:User:index.html.twig',array("users"=>$users));
     }
 
-    public function addAction()
+    public function addAction(Request $request)
     {
         $objUser = new User();
-        $form = $this->createCreateForm($objUser);
+        $form = $this->createForm(new UserType,$objUser);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($objUser);
+            $em->flush();
+            return $this->redirectToRoute('acme_store_user_index');
+        }
         return $this->render('AcmeStoreBundle:User:add.html.twig',array('form' => $form->createView()));
     }
 
@@ -37,22 +45,29 @@ class UserController extends Controller
         return $form;
     }
 
-    public function add2Action()
+    public function add2Action(Request $request)
     {
         $objUser = new User();
         $form = $this->createFormBuilder($objUser)
-             ->setAction($this->generateUrl('acme_store_user_create2'))
-             ->setMethod('POST')
-             ->add('NombreUsuario')
-             ->add('Clave')
-             ->add('NombreCompleto')
-             ->add('IdRol')
-             ->add('Estado',ChoiceType::class, array(
-                 'choices'  => array(
-                     'ACTIVO' => 'ACTIVO','INACTIVO' => 'INACTIVO')))
-             ->add('save',SubmitType::class,array('label'=>'Save user'))
-             ->getForm();
-
+            //->setAction($this->generateUrl('acme_store_user_create2'))
+            ->setMethod('POST')
+            ->add('NombreUsuario')
+            ->add('Clave')
+            ->add('NombreCompleto')
+            ->add('IdRol')
+            ->add('Estado', ChoiceType::class, array(
+                'choices' => array(
+                    'ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO')))
+            ->add('save', SubmitType::class, array('label' => 'Save user'))
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($objUser);
+            $em->flush();
+            return $this->redirectToRoute('acme_store_user_index');
+        }
          return $this->render('AcmeStoreBundle:User:add.html.twig',array('form' => $form->createView()));
     }
 
