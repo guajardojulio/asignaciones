@@ -24,7 +24,7 @@ class UserController extends Controller
     public function addAction(Request $request)
     {
         $objUser = new User();
-        $form = $this->createForm(new UserType,$objUser);
+        $form = $this->createForm(UserType::class,$objUser);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
