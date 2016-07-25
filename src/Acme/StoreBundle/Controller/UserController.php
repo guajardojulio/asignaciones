@@ -61,7 +61,7 @@ class UserController extends Controller
             ->add('save', SubmitType::class, array('label' => 'Save user'))
             ->getForm();
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid())
+        if ($form->isValid())
         {
             $em=$this->getDoctrine()->getManager();
             $em->persist($objUser);

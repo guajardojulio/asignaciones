@@ -2,13 +2,15 @@
 
 namespace Acme\StoreBundle\Form;
 
+use Doctrine\DBAL\Types\StringType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Doctrine\DBAL\Types\StringType;
-use Doctrine\DBAL\Types\IntegerType;
-class UserType extends AbstractType
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+
+class ComunaType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -17,11 +19,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('NombreUsuario')
-            ->add('Clave')
-            ->add('NombreCompleto')
-            ->add('IdRol')
-            ->add('Estado')
+            ->add('nombreComuna',TextType::class)
             ->add('save', SubmitType::class, array('label' => 'Save and Add'))
         ;
     }
@@ -32,7 +30,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Acme\StoreBundle\Entity\User'
+            'data_class' => 'Acme\StoreBundle\Entity\Comuna'
         ));
     }
 }

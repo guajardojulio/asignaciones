@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="User", indexes={@ORM\Index(name="id_rol", columns={"id_rol"})})
+ * @ORM\Table(name="User", uniqueConstraints={@ORM\UniqueConstraint(name="nombre_usuario", columns={"nombre_usuario"})}, indexes={@ORM\Index(name="id_rol", columns={"id_rol"})})
  * @ORM\Entity
  */
 class User
@@ -57,5 +57,134 @@ class User
     private $estado = 'ACTIVO';
 
 
-}
 
+    /**
+     * Get idUsuario
+     *
+     * @return integer
+     */
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
+    }
+
+    /**
+     * Set nombreUsuario
+     *
+     * @param string $nombreUsuario
+     *
+     * @return User
+     */
+    public function setNombreUsuario($nombreUsuario)
+    {
+        $this->nombreUsuario = $nombreUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreUsuario
+     *
+     * @return string
+     */
+    public function getNombreUsuario()
+    {
+        return $this->nombreUsuario;
+    }
+
+    /**
+     * Set clave
+     *
+     * @param string $clave
+     *
+     * @return User
+     */
+    public function setClave($clave)
+    {
+        $this->clave = $clave;
+
+        return $this;
+    }
+
+    /**
+     * Get clave
+     *
+     * @return string
+     */
+    public function getClave()
+    {
+        return $this->clave;
+    }
+
+    /**
+     * Set nombreCompleto
+     *
+     * @param string $nombreCompleto
+     *
+     * @return User
+     */
+    public function setNombreCompleto($nombreCompleto)
+    {
+        $this->nombreCompleto = $nombreCompleto;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreCompleto
+     *
+     * @return string
+     */
+    public function getNombreCompleto()
+    {
+        return $this->nombreCompleto;
+    }
+
+    /**
+     * Set idRol
+     *
+     * @param integer $idRol
+     *
+     * @return User
+     */
+    public function setIdRol($idRol)
+    {
+        $this->idRol = $idRol;
+
+        return $this;
+    }
+
+    /**
+     * Get idRol
+     *
+     * @return integer
+     */
+    public function getIdRol()
+    {
+        return $this->idRol;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param string $estado
+     *
+     * @return User
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return string
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+}

@@ -6,16 +6,15 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
         {% endblock %}
-        
         {% block javascripts %}
             <script src="{{ asset('public/js/jquery.jgh.js') }}"></script>
             <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('public/js/bootbox.min.js') }}"></script>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {{ include('menu.html.twig') }}
         {% block body %}{% endblock %}
-
     </body>
 </html>

@@ -1,0 +1,23 @@
+{%  extends '::base.html.twig' %}
+{% block body %}
+    <div class="main container">
+        {{ include('AcmeStoreBundle:Comuna:messages/success.html.twig') }}
+        <div class="row well">
+            <div class="page-header">
+                <h2 class="padding-none">Editar Comuna.</h2>
+                    {{ form_start(form,{'attr' : {'novalidate':'novalidate','role':'form'}}) }}
+                        {{ form_errors(form) }}
+                        <div class="form-group">
+                            {{ form_label(form.nombreComuna,"Nombre de Comuna:") }}
+
+                            {{ form_widget(form.nombreComuna,{'attr': {'class': 'form-control', 'placeholder':'ingrese nombre de la comuna'} }) }}
+                            <span class="text-danger">{{ form_errors(form.nombreComuna) }}</span>
+                        </div>
+                        <p>
+                            {{ form_widget(form.save,{'label':'Grabar','attr':{'class':'btn btn-success'}}) }}
+                        </p>
+                    {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

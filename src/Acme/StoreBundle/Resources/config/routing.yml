@@ -2,6 +2,48 @@ acme_store_homepage:
     path:     /
     defaults: { _controller: AcmeStoreBundle:Default:index }
 
+acme_store_comuna_index:
+    path:     /comuna/index
+    defaults: { _controller: AcmeStoreBundle:Comuna:index }
+
+acme_store_comuna_add:
+    path:     /comuna/add
+    defaults: { _controller: AcmeStoreBundle:Comuna:add }
+
+acme_store_comuna_view:
+    path:     /comuna/view/{id}
+    defaults: { _controller: AcmeStoreBundle:Comuna:view }
+
+acme_store_comuna_delete:
+    path:     /comuna/delete/{id}
+    defaults: { _controller: AcmeStoreBundle:Comuna:delete }
+    methods: [POST, DELETE]
+
+acme_store_comuna_edit:
+    path:     /comuna/edit/{id}
+    defaults: { _controller: AcmeStoreBundle:Comuna:edit }
+
+acme_store_comuna_update:
+    path:     /comuna/update/{id}
+    defaults: { _controller: AcmeStoreBundle:Comuna:update }
+    methods: [POST, PUT]
+
+acme_store_comuna_update_redirect:
+    path:     /comuna/update/{id}
+    defaults:
+      _controller: AcmeStoreBundle:Comuna:edit
+      path: /comuna/edit/{id}
+      permanet: true
+
+acme_store_comuna_redirect:
+    path:     /comuna/create
+    defaults:
+      _controller: AcmeStoreBundle:Comuna:add
+      path: /comuna/add
+      permanet: true
+
+
+
 acme_store_user_index:
     path:     /user/index
     defaults: { _controller: AcmeStoreBundle:User:index }
@@ -35,4 +77,4 @@ acme_store_user_view:
 
 acme_store_user_del:
     path:     /user/del/{id}
-    defaults: { _controller: AcmeStoreBundle:User:delete }    
+    defaults: { _controller: AcmeStoreBundle:User:delete }

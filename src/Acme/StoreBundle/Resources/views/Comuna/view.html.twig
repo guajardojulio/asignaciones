@@ -1,0 +1,24 @@
+{%  extends '::base.html.twig' %}
+
+{% block body %}
+
+    <div class="container well">
+        <div class="col-md-9">
+            <h2>Id:{{ comuna.idComuna }}</h2>
+            <br>
+            <dl>
+                <dt>Nombre Comuna</dt>
+                <dd>{{ comuna.nombreComuna }}</dd>
+            </dl>
+        </div>
+        <div class="col-md-3">
+            <h3>Acciones</h3>
+            <p>
+            <a href="{{ path('acme_store_comuna_edit', { 'id': comuna.IdComuna }) }}" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-edit"></span>  Editar  </a>
+</p>
+            <p>
+{{ include('AcmeStoreBundle:Comuna:forms/form.html.twig',{form: delete_form, message:'Esta Seguro ?'}) }}
+        </div>
+
+    </div>
+{% endblock %}
