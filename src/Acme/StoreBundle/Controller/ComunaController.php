@@ -18,6 +18,10 @@ class ComunaController extends Controller
 {
     public function indexAction(Request $request)
     {
+        $logger = $this->get('logger');
+        $logger->info('lalalala');
+        $logger->err('lelelel');
+
         $em =$this->getDoctrine()->getManager();
         #$objComuna = $em->getRepository('AcmeStoreBundle:Comuna')->findAll();
 
