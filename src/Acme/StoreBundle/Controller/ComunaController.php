@@ -46,6 +46,14 @@ class ComunaController extends Controller
         return new Response('<pre>'.print_r($objComuna,true).'</pre>');
     }
 
+
+    public function zonaAction()
+    {
+
+        return new Response('<h1>ZONA SEGURA</h1>');
+    }
+
+
     private function createCustomForm($id,$method,$route)
     {
         return $this->createFormBuilder()

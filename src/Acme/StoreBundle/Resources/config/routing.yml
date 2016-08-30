@@ -82,3 +82,7 @@ acme_store_user_view:
 acme_store_user_del:
     path:     /user/del/{id}
     defaults: { _controller: AcmeStoreBundle:User:delete }
+
+acme_store_zona_segura:
+    path:     /zona
+    defaults: { _controller: AcmeStoreBundle:Comuna:zona }
