@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Acme\StoreBundle\Entity\Comuna;
 use Acme\StoreBundle\Form\ComunaType;
+use Acme\StoreBundle\Model;
+
 
 class ComunaController extends Controller
 {
@@ -32,6 +34,14 @@ class ComunaController extends Controller
         return $this->render('AcmeStoreBundle:Comuna:index.html.twig',array("pagination"=>$pagination,'delete_form_ajax'=>$deleteFormAjax->createView()));
     }
 
+    public function listAction()
+    {
+        #$objComuna=$this->get('AcmeStoreBundle.ListaComuna');
+        #$em =$this->getDoctrine()->getManager();
+        $objComuna = $this->get('AcmeStoreBundle.lista_comuna')->last();
+        return new Response('<pre>'.print_r($objComuna,true).'</pre>');
+    }
+
     private function createCustomForm($id,$method,$route)
     {
         return $this->createFormBuilder()
@@ -39,6 +49,8 @@ class ComunaController extends Controller
             ->setMethod($method)
             ->getForm();
     }
+
+
     public function addAction(Request $request)
     {
         $objComuna = new Comuna();

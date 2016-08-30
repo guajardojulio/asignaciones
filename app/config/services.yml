@@ -7,3 +7,6 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    AcmeStoreBundle.lista_comuna:
+        class: Acme\StoreBundle\Model\ListaComuna
+        arguments: ["@doctrine.orm.entity_manager"]

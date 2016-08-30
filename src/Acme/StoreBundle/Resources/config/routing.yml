@@ -2,6 +2,10 @@ acme_store_homepage:
     path:     /
     defaults: { _controller: AcmeStoreBundle:Default:index }
 
+acme_store_comuna_list:
+    path:     /comuna/list
+    defaults: { _controller: AcmeStoreBundle:Comuna:list }
+
 acme_store_comuna_index:
     path:     /comuna/index
     defaults: { _controller: AcmeStoreBundle:Comuna:index }
