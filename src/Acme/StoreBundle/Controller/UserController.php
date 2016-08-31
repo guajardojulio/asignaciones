@@ -14,6 +14,12 @@ use Acme\StoreBundle\Form\UserType;
 
 class UserController extends Controller
 {
+    public function homeAction()
+    {
+        #return new Response('<h1>HOME!</h1>');
+        return $this->render('AcmeStoreBundle:User:home.html.twig');
+    }
+
     public function indexAction()
     {
         $em =$this->getDoctrine()->getManager();

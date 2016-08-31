@@ -1,0 +1,25 @@
+{%  extends '::base.html.twig' %}
+{% block body %}
+    {% if error %}
+        <div>{{ error.message }}</div>
+        <div>{{ error.messageKey }}</div>
+    {% endif %}
+
+    <form action="{{ path('acmestore_user_check') }}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password" />
+
+        {#
+            Si deseas controlar la URL a la que rediriges al
+            usuario en caso de éxito (más detalles abajo)
+            <input type="hidden" name="_target_path" value="/account" />
+        #}
+
+        <input type="hidden" name="_target_path" value="acmestore_user_homepage" />
+        <button type="submit">login</button>
+    </form>
+{% endblock %}
+

@@ -3,6 +3,7 @@
 namespace Acme\StoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="User", uniqueConstraints={@ORM\UniqueConstraint(name="nombre_usuario", columns={"nombre_usuario"})}, indexes={@ORM\Index(name="id_rol", columns={"id_rol"})})
  * @ORM\Entity
  */
-class User
+class User implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var integer
@@ -164,6 +165,12 @@ class User
         return $this->idRol;
     }
 
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+        return null;
+    }
+
     /**
      * Set estado
      *
@@ -187,4 +194,50 @@ class User
     {
         return $this->estado;
     }
+
+    public function __construct()
+    {
+        $this->isActive = true;
+    }
+
+    public function serialize()
+    {
+        // TODO: Implement serialize() method.
+        return serialize(array(
+            $this->idUsuario,
+            $this->clave
+        ));
+    }
+
+    public function unserialize($serialized)
+    {
+        // TODO: Implement unserialize() method.
+        list(
+            $this->idUsuario,
+            $this->clave
+            )= $this->unserialize($serialized);
+    }
+
+    public function isAccountNonExpired()
+    {
+        // TODO: Implement isAccountNonExpired() method.
+        return true;
+    }
+    public function isAccountNonLocked()
+    {
+        // TODO: Implement isAccountNonLocked() method.
+        return true;
+    }
+    public function isCredentialsNonExpired()
+    {
+        // TODO: Implement isCredentialsNonExpired() method.
+        return true;
+    }
+    public function isEnabled()
+    {
+        // TODO: Implement isEnabled() method.
+        return true;
+    }
+
+
 }

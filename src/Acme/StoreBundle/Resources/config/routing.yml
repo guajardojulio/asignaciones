@@ -1,7 +1,3 @@
-acme_store_homepage:
-    path:     /
-    defaults: { _controller: AcmeStoreBundle:Default:index }
-
 acme_store_comuna_list:
     path:     /comuna/list
     defaults: { _controller: AcmeStoreBundle:Comuna:list }
@@ -46,8 +42,6 @@ acme_store_comuna_redirect:
       path: /comuna/add
       permanet: true
 
-
-
 acme_store_user_index:
     path:     /user/index
     defaults: { _controller: AcmeStoreBundle:User:index }
@@ -86,3 +80,21 @@ acme_store_user_del:
 acme_store_zona_segura:
     path:     /zona
     defaults: { _controller: AcmeStoreBundle:Comuna:zona }
+
+acmestore_user_login2:
+    path:     /login
+    defaults: { _controller: AcmeStoreBundle:Security:login }
+
+acmestore_user_check:
+    path:     /login_check
+    defaults: { _controller: AcmeStoreBundle:Security:loginCheck}
+
+acmestore_user_homepage:
+    path:     /
+    defaults: { _controller: AcmeStoreBundle:User:home}
+
+acmestore_user_logout:
+    path:     /logout
+
+
+

@@ -14,7 +14,9 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {{ include('menu.html.twig') }}
+        {%  if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {{ include('menu.html.twig') }}
+        {% endif %}
         {% block body %}{% endblock %}
     </body>
 </html>
